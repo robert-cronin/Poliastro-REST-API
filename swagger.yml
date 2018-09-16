@@ -12,23 +12,86 @@ basePath: "/api"
 
 # Paths supported by the server application
 paths:
-  /people:
+  /twobody/orbit:
     get:
-      operationId: "people.read"
+      operationId: "twobody.orbit.returnOrbitAsVectors"
       tags:
-        - "People"
+        - "Orbit"
       summary: "The people data structure supported by the server application"
       description: "Read the list of people"
       responses:
         200:
-          description: "Successful read people list operation"
+          description: "Successful calculate 2D orbit from classical parameters operation"
           schema:
             type: "array"
             items:
               properties:
-                fname:
+                orbitstring:
                   type: "string"
-                lname:
+                attractor:
                   type: "string"
-                timestamp:
+                r:
+                  type: "array"
+                  items:
+                    properties:
+                      x:
+                        type: "number"
+                      y:
+                        type: "number"
+                      z:
+                        type: "number"
+
+                v:
+                  type: "array"
+                  items:
+                    properties:
+                      x:
+                        type: "number"
+                      y:
+                        type: "number"
+                      z:
+                        type: "number"
+                epoch:
                   type: "string"
+                plotbase64:
+                  type: "string"
+                  format: "byte"
+  # /twobody/orbit:
+  #   get:
+  #     operationId: "twobody.orbit.returnOrbitAs"
+  #     tags:
+  #       - "Orbit"
+  #     summary: "The people data structure supported by the server application"
+  #     description: "Read the list of people"
+  #     responses:
+  #       200:
+  #         description: "Successful calculate 2D orbit from classical parameters operation"
+  #         schema:
+  #           type: "array"
+  #           items:
+  #             properties:
+  #               attractor:
+  #                 type: "string"
+  #               r:
+  #                 type: "array"
+  #                 items:
+  #                   properties:
+  #                     x:
+  #                       type: "number"
+  #                     y:
+  #                       type: "number"
+  #                     z:
+  #                       type: "number"
+  #
+  #               v:
+  #                 type: "array"
+  #                 items:
+  #                   properties:
+  #                     x:
+  #                       type: "number"
+  #                     y:
+  #                       type: "number"
+  #                     z:
+  #                       type: "number"
+  #               epoch:
+  #                 type: "string"
